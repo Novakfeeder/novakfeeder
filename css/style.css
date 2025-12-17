@@ -349,3 +349,25 @@ header.top{
   border-left: 0 !important;
   border-right: 0 !important;
 }
+/* === HEADER: logo na střed + větší === */
+header.top{
+  background: #000;
+  padding: 24px 0;
+}
+
+header.top .wrap{
+  max-width: none;
+  padding: 0;
+}
+
+header.top .brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header.top .brand__logo--full{
+  height: 220px;   /* ← tady řídíš velikost */
+  width: auto;
+  object-fit: contain;
+}
