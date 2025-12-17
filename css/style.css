@@ -227,3 +227,40 @@ h2{ margin:0 0 10px; font-size:26px; }
   .shot img{ height:200px; }
   .logo-banner{ height:100px; } /* logo na mobilu */
 }
+/* === HEADER RESET === */
+.top{
+  padding: 0;
+  background: #000;
+}
+
+.top .wrap{
+  max-width: none;      /* ZRUŠÍ OMEZENÍ ŠÍŘKY */
+  padding: 0;
+}
+
+/* === LOGO === */
+.brand{
+  display: flex;
+  justify-content: center;
+}
+
+.brand__logo--full{
+  height: 180px;        /* ← ZVĚTŠENÍ LOGA */
+  width: auto;
+  object-fit: contain;
+
+  /* ZRUŠENÍ OKRAJŮ */
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === NAV POD LOGEM === */
+.nav{
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0 18px;
+}
