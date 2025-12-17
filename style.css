@@ -282,3 +282,27 @@ h2{
   .gallery{ grid-template-columns: 1fr; }
   .shot img{ height: 200px; }
 }
+/* FORCE header layout (override) */
+header.top .wrap.top__inner{
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+}
+
+header.top .brand.brand--full{
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+header.top img.brand__logo--full{
+  width: min(1100px, 100%) !important;
+  height: 150px !important;
+  object-fit: contain !important;
+}
+
+header.top nav.nav{
+  width: 100% !important;
+  justify-content: center !important;
+}
