@@ -64,10 +64,15 @@ a{ color:inherit; }
 .logo-banner{
   width:100%;
   max-width:1200px;   /* ⬅ šířka banneru */
-  height:140px;       /* ⬅ výška banneru (upravíme když budeš chtít) */
+  height:260px;       /* ⬅ výška banneru (upravíme když budeš chtít) */
   object-fit:contain;
   display:block;
   margin:0 auto;
+}
+@media (max-width:600px){
+  .logo-banner{
+    height:160px;
+  }
 }
 
 /* Nav */
