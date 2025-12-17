@@ -371,3 +371,7 @@ header.top .brand__logo--full{
   width: auto;
   object-fit: contain;
 }
+/* schovat navigaci pod logem */
+header.top .nav{
+  display: none;
+}
