@@ -311,3 +311,22 @@ header.top{
 header.top::before{
   content: none !important;          /* kdyby tam byl nějaký overlay */
 }
+/* === FINAL FIX: žádné prosvítání karbonu v hlavičce === */
+header.top{
+  background: #000 !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+}
+
+/* když máš banner/logo nahoře, zrušíme všechny možné rámečky okolo loga */
+header.top img,
+header.top a{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* jistota: nic z body::before nesmí chytat kliky ani se míchat s headerem */
+body::before{
+  pointer-events: none !important;
+}
