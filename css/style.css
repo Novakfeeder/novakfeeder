@@ -330,3 +330,22 @@ header.top a{
 body::before{
   pointer-events: none !important;
 }
+/* === FINAL: odstranit svislé čáry (border/outline) v HEADERU === */
+header.top,
+header.top *{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+header.top .wrap,
+header.top .header__wrap,
+header.top a.brand{
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* jistota: žádný left/right border na hlavičce */
+header.top{
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
