@@ -380,3 +380,9 @@ header.top .brand__logo--full{
 header.top .nav{
   display: none;
 }
+.hero__text{
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
