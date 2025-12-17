@@ -264,3 +264,27 @@ h2{ margin:0 0 10px; font-size:26px; }
   gap: 24px;
   padding: 12px 0 18px;
 }
+/* FIX: logo bez okrajů + větší */
+header.top .wrap{
+  max-width: none !important;   /* zruší omezení šířky */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+header.top a.brand{
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+header.top img.brand__logo--full{
+  height: 190px !important;     /* zvětšení */
+  width: auto !important;
+  object-fit: contain !important;
+
+  /* odstranění “rámečků” okolo loga */
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
