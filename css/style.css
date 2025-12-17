@@ -288,3 +288,17 @@ header.top img.brand__logo--full{
   padding: 0 !important;
   box-shadow: none !important;
 }
+/* === FIX: odstranit svislé čáry v headeru === */
+header.top{
+  position: relative;
+  overflow: hidden;      /* ← KLÍČOVÉ */
+  background: #000;      /* čisté pozadí */
+}
+
+header.top::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: -1;
+}
