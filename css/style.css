@@ -302,3 +302,12 @@ header.top::before{
   background: #000;
   z-index: -1;
 }
+/* === FIX: žádné prosvítání karbonu v headeru (odstraní svislé čáry) === */
+header.top{
+  background: #000 !important;       /* neprůhledné */
+  backdrop-filter: none !important;  /* vypnout blur */
+}
+
+header.top::before{
+  content: none !important;          /* kdyby tam byl nějaký overlay */
+}
