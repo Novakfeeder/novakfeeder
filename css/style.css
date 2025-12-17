@@ -297,10 +297,16 @@ img.brand__logo--full{
   width: min(1100px, 100%);
   height: 170px;            /* když chceš menší, dej 140px */
   object-fit: contain;
-  padding: 12px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.14);
+  img.brand__logo--full{
+  width: min(1100px, 100%);
+  height: 160px;          /* klidně 150 / 170 */
+  object-fit: contain;
+
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 }
 
 .nav{
