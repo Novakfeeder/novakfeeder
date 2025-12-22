@@ -201,3 +201,89 @@ h2{ margin-bottom:8px; }
 /* Utility */
 .text-muted{ color:var(--muted); }
 .center{ text-align:center; }
+
+/* ------------------------------------------------------------------
+   Custom changes requested:
+   - Make card text white (remove purple/muted coloring).
+   - Remove button background on the card in the first screenshot.
+   - For the second screenshot: stack content vertically centered,
+     remove the thin border/frame (keep the panel background), and
+     center the inner text.
+   These are implemented below. Apply the .hero--stacked class to the
+   hero element you want stacked (see notes after file).
+   ------------------------------------------------------------------ */
+
+/* Ensure card headings / paragraphs are white */
+.card h1,
+.card h2,
+.card h3,
+.card p,
+.card .text-muted {
+  color: var(--text);
+}
+
+/* Make card CTA transparent (no white background) and use white text */
+.card__cta{
+  background: transparent;
+  color: var(--text);
+  border: none; /* remove the white border */
+  box-shadow: none;
+  padding:8px 12px;
+  border-radius:10px;
+}
+
+/* If you want a subtle focus/hover for the CTA, keep this */
+.card__cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.28);
+}
+
+/* Make hero paragraph white as requested */
+.hero p{
+  color: var(--text);
+}
+
+/* Remove border/frame from hero text panel when stacked, keep background */
+.hero--no-frame .hero__text{
+  border: none;
+  box-shadow: var(--shadow); /* keep drop shadow if desired */
+}
+
+/* A helper class to force the hero layout to stacked, centered vertically */
+.hero--stacked .hero__grid{
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* When stacked, ensure inner content is vertically stacked and centered */
+.hero--stacked .hero__text{
+  /* remove the visible border but keep the subtle panel background */
+  border: none;
+  background: var(--panel);
+  padding: 28px;
+  min-height: auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero--stacked .hero__text-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 60ch;
+}
+
+/* If you want the right-side small description (in the two-column layout)
+   to be stacked under the heading when using .hero--stacked, force it to full-width */
+.hero--stacked .hero__media,
+.hero--stacked .hero__text{
+  width: 100%;
+}
+
+/* Optional: make hero heading slightly larger and well-centered in stacked mode */
+.hero--stacked .hero h1{
+  font-size: clamp(30px, 6vw, 56px);
+  line-height: 1.02;
+  margin-bottom: 8px;
+}
