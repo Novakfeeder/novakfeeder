@@ -5,57 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NovakFeeder.cz</title>
   <meta name="description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovakFeeder." />
-  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
 </head>
 
 <body>
-  <header class="top">
+  <header class="top" aria-label="Hlavička">
     <div class="wrap top__inner">
-      <a class="brand" href="#">
-        <img class="logo-banner" src="assets/logo-transparent.png" alt="NovakFeeder.cz – logo">
+      <a class="brand" href="#" aria-label="NovakFeeder.cz">
+        <img class="logo-banner" src="assets/logo-transparent.png" alt="NovakFeeder.cz – logo" />
       </a>
+      <!-- Navigace schovaná (dřív Produkty / Galerie). Když ji budeš chtít zpět, řekni. -->
     </div>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-label="Úvod">
       <div class="wrap hero__grid">
         <div class="hero__text">
           <h1>Method feeder bez kompromisů.</h1>
           <p>Nástrahy, směsi a atraktory NovakFeeder pro spolehlivý lov u vody.</p>
         </div>
 
-        <div class="hero__media">
-          <img src="assets/gallery-fluo3.jpg" alt="Produktová fotografie NovakFeeder">
+        <div class="hero__media" aria-label="Produktová fotografie">
+          <img src="assets/gallery-fluo3.jpg" alt="NovakFeeder – produktová fotografie" />
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section id="produkty" class="section" aria-label="Produkty">
       <div class="wrap">
         <h2>Produkty</h2>
         <p class="muted">Vybrané kategorie značky NovakFeeder.</p>
 
         <div class="cards">
-          <a class="card" href="https://www.innoboats.cz/nastrahy-pro-method-feeder/" target="_blank">
+          <a class="card" href="https://www.innoboats.cz/nastrahy-pro-method-feeder/" target="_blank" rel="noopener">
             <h3>Nástrahy pro method feeder</h3>
             <p>Wafters, pop-up a další.</p>
             <span class="card__cta">Otevřít kategorii →</span>
           </a>
 
-          <a class="card" href="https://www.innoboats.cz/vnadici-smesi-a-pelety-2/" target="_blank">
+          <a class="card" href="https://www.innoboats.cz/vnadici-smesi-a-pelety-2/" target="_blank" rel="noopener">
             <h3>Vnadící směsi a pelety</h3>
             <p>Směsi, micropelety a pelety.</p>
             <span class="card__cta">Otevřít kategorii →</span>
           </a>
 
-          <a class="card" href="https://www.innoboats.cz/atraktory-2/" target="_blank">
+          <a class="card" href="https://www.innoboats.cz/atraktory-2/" target="_blank" rel="noopener">
             <h3>Atraktory</h3>
             <p>Dipy, boostery a tekuté přísady.</p>
             <span class="card__cta">Otevřít kategorii →</span>
           </a>
 
-          <a class="card" href="https://www.innoboats.cz/doplnky-pro-lov/" target="_blank">
+          <a class="card" href="https://www.innoboats.cz/doplnky-pro-lov/" target="_blank" rel="noopener">
             <h3>Doplňky pro lov</h3>
             <p>Praktické doplňky a příslušenství.</p>
             <span class="card__cta">Otevřít kategorii →</span>
@@ -64,15 +65,24 @@
       </div>
     </section>
 
-    <section class="section section--alt">
+    <section id="galerie" class="section section--alt" aria-label="Galerie">
       <div class="wrap">
         <h2>Galerie</h2>
+        <p class="muted">Ukázky produktů NovakFeeder.</p>
 
         <div class="gallery">
-          <img src="assets/gallery-5mm.jpg">
-          <img src="assets/gallery-szirupy.jpg">
-          <img src="assets/gallery-spray4.jpg">
-          <img src="assets/gallery-spray5.jpg">
+          <figure class="shot">
+            <img src="assets/gallery-5mm.jpg" alt="NovakFeeder – 5mm" loading="lazy" />
+          </figure>
+          <figure class="shot">
+            <img src="assets/gallery-szirupy.jpg" alt="NovakFeeder – sirupy" loading="lazy" />
+          </figure>
+          <figure class="shot">
+            <img src="assets/gallery-spray4.jpg" alt="NovakFeeder – spray" loading="lazy" />
+          </figure>
+          <figure class="shot">
+            <img src="assets/gallery-spray5.jpg" alt="NovakFeeder – spray" loading="lazy" />
+          </figure>
         </div>
 
         <p class="tiny muted foot">© <span id="year"></span> NovakFeeder.cz</p>
