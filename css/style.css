@@ -1,237 +1,137 @@
 :root{
   --bg:#0b0c0f;
-  --panel:rgba(255,255,255,.07);
-  --panel2:rgba(255,255,255,.05);
   --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.70);
+  --muted:rgba(255,255,255,.7);
   --border:rgba(255,255,255,.14);
+  --panel:rgba(255,255,255,.06);
   --shadow:0 12px 40px rgba(0,0,0,.45);
   --radius:18px;
   --max:1100px;
 }
 
 *{ box-sizing:border-box; }
-html,body{ height:100%; }
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  color:var(--text);
+  font-family:system-ui, Arial;
   background:var(--bg);
+  color:var(--text);
   line-height:1.55;
 }
 
-/* Carbon background */
+/* Carbon */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.72)),
-    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 2px, transparent 2px 8px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px);
-  pointer-events:none;
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.75)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 2px, transparent 2px 8px);
   z-index:-1;
 }
 
-a{ color:inherit; }
-
 .wrap{
   max-width:var(--max);
-  margin:0 auto;
+  margin:auto;
   padding:0 18px;
 }
 
-/* =========================
-   HEADER (čistý, bez blur)
-   ========================= */
+/* Header */
 .top{
-  background:#000;                  /* neprůhledné – žádné “čáry” */
-  border-bottom:1px solid rgba(255,255,255,0.12);
+  background:#000;
   padding:24px 0;
 }
-
 .top__inner{
   display:flex;
   justify-content:center;
-  align-items:center;
 }
-
-.brand{
-  display:flex;
-  justify-content:center;
-  width:100%;
-  text-decoration:none;
-}
-
-/* Banner logo (odpovídá HTML: .logo-banner) */
 .logo-banner{
-  width:100%;
   max-width:1200px;
-  height:260px;                     /* ← velikost loga */
+  width:100%;
+  height:260px;
   object-fit:contain;
-  display:block;
-  margin:0 auto;
 }
 
-/* =========================
-   HERO (bez orámování)
-   ========================= */
-.hero{ padding:34px 0 18px; }
-
+/* Hero */
+.hero{
+  padding:40px 0;
+}
 .hero__grid{
   display:grid;
   grid-template-columns:1.2fr .8fr;
-  gap:18px;
-  align-items:center;
+  gap:24px;
+  align-items:center; /* ← VYŘEŠENO */
 }
-
-/* hero text bez “karty” */
 .hero__text{
-  background:none;
-  border:none;
-  border-radius:0;
-  padding:0;
-  box-shadow:none;
   display:flex;
   flex-direction:column;
   justify-content:center;
-
-.hero__text h1{
+}
+.hero h1{
   margin:0 0 10px;
-  font-size:clamp(28px, 4vw, 44px);
-  line-height:1.12;
-  text-shadow: 0 6px 24px rgba(0,0,0,0.85);
+  font-size:clamp(28px,4vw,44px);
 }
-
-.hero__text p{
+.hero p{
   margin:0;
+  max-width:60ch;
   color:var(--muted);
-  max-width:62ch;
-  text-shadow: 0 4px 16px rgba(0,0,0,0.75);
 }
-
 .hero__media{
-  background:var(--panel2);
-  border:1px solid var(--border);
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow:var(--shadow);
-  min-height:260px;
 }
-
 .hero__media img{
   width:100%;
   height:100%;
   object-fit:cover;
-  display:block;
-  filter:contrast(1.05) saturate(1.05);
 }
 
-/* =========================
-   SECTIONS
-   ========================= */
-.section{ padding:26px 0 34px; }
-.section--alt{ padding:30px 0 40px; }
+/* Sections */
+.section{ padding:30px 0; }
+.section--alt{ padding-bottom:40px; }
+h2{ margin-bottom:8px; }
 
-h2{ margin:0 0 10px; font-size:26px; }
-.muted{ color:var(--muted); }
-.tiny{ font-size:13px; }
-.foot{ margin-top:18px; }
-
-/* =========================
-   PRODUCT CARDS (sjednocené)
-   ========================= */
+/* Cards */
 .cards{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
-  margin-top:14px;
 }
-
 .card{
-  display:flex;                     /* aby CTA šlo dolů */
+  display:flex;
   flex-direction:column;
-  text-decoration:none;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
+  background:var(--panel);
+  border:1px solid var(--border);
   border-radius:16px;
   padding:16px;
-  box-shadow:0 10px 28px rgba(0,0,0,.35);
-  transition:transform .10s ease, background .2s ease, border-color .2s ease;
-  min-height:165px;
+  text-decoration:none;
 }
+.card__cta{ margin-top:auto; font-weight:700; }
 
-.card:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.22);
-}
-
-.card h3{ margin:0 0 6px; font-size:16px; }
-.card p{ margin:0 0 12px; color:var(--muted); font-size:14px; }
-
-.card__cta{
-  margin-top:auto;                  /* CTA vždy dole */
-  font-weight:800;
-  font-size:14px;
-  opacity:.95;
-}
-
-/* =========================
-   GALLERY (hover polish)
-   ========================= */
+/* Gallery */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
-  margin-top:14px;
 }
-
-.shot{
-  margin:0;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.04);
-  box-shadow:0 10px 28px rgba(0,0,0,.35);
-  transition: transform .12s ease, border-color .2s ease;
-}
-
-.shot:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.22);
-}
-
-.shot img{
+.gallery img{
   width:100%;
   height:220px;
   object-fit:cover;
-  display:block;
-  transition: transform .25s ease;
+  border-radius:16px;
 }
 
-.shot:hover img{
-  transform: scale(1.03);
-}
+/* Footer */
+.foot{ margin-top:18px; }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
-@media (max-width:980px){
-  .cards{ grid-template-columns:repeat(2, 1fr); }
-  .gallery{ grid-template-columns:repeat(2, 1fr); }
+/* Responsive */
+@media(max-width:900px){
+  .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
 }
-
-@media (max-width:760px){
+@media(max-width:600px){
   .hero__grid{ grid-template-columns:1fr; }
-}
-
-@media (max-width:600px){
   .logo-banner{ height:160px; }
 }
-
-@media (max-width:520px){
-  .cards{ grid-template-columns:1fr; }
-  .gallery{ grid-template-columns:1fr; }
-  .shot img{ height:200px; }
+@media(max-width:520px){
+  .cards,.gallery{ grid-template-columns:1fr; }
 }
