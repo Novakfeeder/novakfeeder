@@ -82,7 +82,7 @@ a{ color:inherit; }
   display:grid;
   grid-template-columns:1.2fr .8fr;
   gap:18px;
-  align-items:stretch;
+  align-items:center;
 }
 
 /* hero text bez “karty” */
@@ -92,7 +92,9 @@ a{ color:inherit; }
   border-radius:0;
   padding:0;
   box-shadow:none;
-}
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
 .hero__text h1{
   margin:0 0 10px;
