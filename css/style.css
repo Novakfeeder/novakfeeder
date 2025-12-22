@@ -7,28 +7,34 @@
   --shadow:0 12px 40px rgba(0,0,0,.45);
   --radius:18px;
   --max:1100px;
+  --gap:24px;
 }
 
+/* Reset / base */
 *{ box-sizing:border-box; }
+html,body{ height:100%; }
 body{
   margin:0;
-  font-family:system-ui, Arial;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   background:var(--bg);
   color:var(--text);
   line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* Carbon */
+/* Carbon background */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
     linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.75)),
-    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 2px, transparent 2px 8px);
+    repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 8px);
   z-index:-1;
 }
 
+/* Layout wrapper */
 .wrap{
   max-width:var(--max);
   margin:auto;
@@ -51,39 +57,92 @@ body::before{
   object-fit:contain;
 }
 
-/* Hero */
+/* Hero (new: text in centered panel beside media) */
 .hero{
   padding:40px 0;
 }
 .hero__grid{
   display:grid;
   grid-template-columns:1.2fr .8fr;
-  gap:24px;
-  align-items:center; /* ← VYŘEŠENO */
+  gap:var(--gap);
+  align-items:center;
 }
+
+/* Hero text panel */
 .hero__text{
   display:flex;
-  flex-direction:column;
+  align-items:center;
   justify-content:center;
+  text-align:center;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  min-height:260px; /* sladěné s obrázkovým panelem pro konzistentní výšku */
+  box-shadow:var(--shadow);
+}
+
+/* Vnitřní text - může být <h1>, <p>, a tlačítko (.btn) */
+.hero__text-inner{
+  max-width:60ch;
 }
 .hero h1{
   margin:0 0 10px;
   font-size:clamp(28px,4vw,44px);
+  line-height:1.05;
+  color:var(--text);
 }
 .hero p{
-  margin:0;
-  max-width:60ch;
+  margin:0 0 18px;
   color:var(--muted);
+  font-size:1rem;
 }
+
+/* Media (obrázek/video) */
 .hero__media{
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow:var(--shadow);
+  min-height:260px;
+  display:block;
 }
-.hero__media img{
+.hero__media img,
+.hero__media video{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
+}
+
+/* Buttons: vráceno na bílou */
+.btn{
+  background:#fff;
+  color:var(--bg);
+  border:1px solid rgba(0,0,0,.06);
+  padding:10px 16px;
+  border-radius:12px;
+  font-weight:700;
+  text-decoration:none;
+  display:inline-block;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,.28);
+}
+
+/* Pokud se používá .card__cta jako tlačítko, upravíme na bílé pozadí také */
+.card__cta{
+  margin-top:auto;
+  font-weight:700;
+  background:#fff;
+  color:var(--bg);
+  padding:8px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  border:1px solid rgba(0,0,0,.06);
 }
 
 /* Sections */
@@ -106,7 +165,6 @@ h2{ margin-bottom:8px; }
   padding:16px;
   text-decoration:none;
 }
-.card__cta{ margin-top:auto; font-weight:700; }
 
 /* Gallery */
 .gallery{
@@ -125,13 +183,21 @@ h2{ margin-bottom:8px; }
 .foot{ margin-top:18px; }
 
 /* Responsive */
-@media(max-width:900px){
+@media (max-width:900px){
   .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
+  .hero__text, .hero__media{ min-height:220px; }
 }
-@media(max-width:600px){
-  .hero__grid{ grid-template-columns:1fr; }
+@media (max-width:600px){
+  .hero__grid{ grid-template-columns:1fr; gap:16px; }
   .logo-banner{ height:160px; }
+  .hero__text{ padding:18px; min-height:160px; }
+  .hero__media{ min-height:160px; }
+  .hero p{ max-width:48ch; }
 }
-@media(max-width:520px){
+@media (max-width:520px){
   .cards,.gallery{ grid-template-columns:1fr; }
 }
+
+/* Utility */
+.text-muted{ color:var(--muted); }
+.center{ text-align:center; }
