@@ -1,26 +1,23 @@
 :root{
   --bg:#0b0c0f;
+  --panel:rgba(255,255,255,.07);
+  --panel2:rgba(255,255,255,.05);
   --text:rgba(255,255,255,.92);
-  --muted:rgba(255,255,255,.7);
+  --muted:rgba(255,255,255,.70);
   --border:rgba(255,255,255,.14);
-  --panel:rgba(255,255,255,.06);
   --shadow:0 12px 40px rgba(0,0,0,.45);
   --radius:18px;
   --max:1100px;
-  --gap:24px;
 }
 
-/* Reset / base */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
   margin:0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color:var(--text);
+  background:var(--bg);
   line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
 
 /* Carbon background */
@@ -29,261 +26,210 @@ body::before{
   position:fixed;
   inset:0;
   background:
-    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.75)),
-    repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 8px);
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.72)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 2px, transparent 2px 8px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px);
+  pointer-events:none;
   z-index:-1;
 }
 
-/* Layout wrapper */
+a{ color:inherit; }
+
 .wrap{
   max-width:var(--max);
-  margin:auto;
+  margin:0 auto;
   padding:0 18px;
 }
 
-/* Header */
+/* =========================
+   HEADER (čistý, bez blur)
+   ========================= */
 .top{
-  background:#000;
+  background:#000;                  /* neprůhledné – žádné “čáry” */
+  border-bottom:1px solid rgba(255,255,255,0.12);
   padding:24px 0;
 }
+
 .top__inner{
   display:flex;
   justify-content:center;
-}
-.logo-banner{
-  max-width:1200px;
-  width:100%;
-  height:260px;
-  object-fit:contain;
+  align-items:center;
 }
 
-/* Hero (new: text in centered panel beside media) */
-.hero{
-  padding:40px 0;
+.brand{
+  display:flex;
+  justify-content:center;
+  width:100%;
+  text-decoration:none;
 }
+
+/* Banner logo (odpovídá HTML: .logo-banner) */
+.logo-banner{
+  width:100%;
+  max-width:1200px;
+  height:260px;                     /* ← velikost loga */
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+}
+
+/* =========================
+   HERO (bez orámování)
+   ========================= */
+.hero{ padding:34px 0 18px; }
+
 .hero__grid{
   display:grid;
   grid-template-columns:1.2fr .8fr;
-  gap:var(--gap);
-  align-items:center;
+  gap:18px;
+  align-items:stretch;
 }
 
-/* Hero text panel */
+/* hero text bez “karty” */
 .hero__text{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:28px;
-  min-height:260px; /* sladěné s obrázkovým panelem pro konzistentní výšku */
-  box-shadow:var(--shadow);
+  background:none;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
 }
 
-/* Vnitřní text - může být <h1>, <p>, a tlačítko (.btn) */
-.hero__text-inner{
-  max-width:60ch;
-}
-.hero h1{
+.hero__text h1{
   margin:0 0 10px;
-  font-size:clamp(28px,4vw,44px);
-  line-height:1.05;
-  color:var(--text);
-}
-.hero p{
-  margin:0 0 18px;
-  color:var(--muted);
-  font-size:1rem;
+  font-size:clamp(28px, 4vw, 44px);
+  line-height:1.12;
+  text-shadow: 0 6px 24px rgba(0,0,0,0.85);
 }
 
-/* Media (obrázek/video) */
+.hero__text p{
+  margin:0;
+  color:var(--muted);
+  max-width:62ch;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.75);
+}
+
 .hero__media{
+  background:var(--panel2);
+  border:1px solid var(--border);
   border-radius:var(--radius);
   overflow:hidden;
   box-shadow:var(--shadow);
   min-height:260px;
-  display:block;
 }
-.hero__media img,
-.hero__media video{
+
+.hero__media img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
+  filter:contrast(1.05) saturate(1.05);
 }
 
-/* Buttons: vráceno na bílou */
-.btn{
-  background:#fff;
-  color:var(--bg);
-  border:1px solid rgba(0,0,0,.06);
-  padding:10px 16px;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-  display:inline-block;
-  cursor:pointer;
-  transition:transform .12s ease, box-shadow .12s ease;
-}
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(0,0,0,.28);
-}
+/* =========================
+   SECTIONS
+   ========================= */
+.section{ padding:26px 0 34px; }
+.section--alt{ padding:30px 0 40px; }
 
-/* Pokud se používá .card__cta jako tlačítko, upravíme na bílé pozadí také */
-.card__cta{
-  margin-top:auto;
-  font-weight:700;
-  background:#fff;
-  color:var(--bg);
-  padding:8px 12px;
-  border-radius:10px;
-  text-decoration:none;
-  display:inline-block;
-  border:1px solid rgba(0,0,0,.06);
-}
+h2{ margin:0 0 10px; font-size:26px; }
+.muted{ color:var(--muted); }
+.tiny{ font-size:13px; }
+.foot{ margin-top:18px; }
 
-/* Sections */
-.section{ padding:30px 0; }
-.section--alt{ padding-bottom:40px; }
-h2{ margin-bottom:8px; }
-
-/* Cards */
+/* =========================
+   PRODUCT CARDS (sjednocené)
+   ========================= */
 .cards{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(4, 1fr);
   gap:12px;
-}
-.card{
-  display:flex;
-  flex-direction:column;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-  text-decoration:none;
+  margin-top:14px;
 }
 
-/* Gallery */
+.card{
+  display:flex;                     /* aby CTA šlo dolů */
+  flex-direction:column;
+  text-decoration:none;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  transition:transform .10s ease, background .2s ease, border-color .2s ease;
+  min-height:165px;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.09);
+  border-color:rgba(255,255,255,.22);
+}
+
+.card h3{ margin:0 0 6px; font-size:16px; }
+.card p{ margin:0 0 12px; color:var(--muted); font-size:14px; }
+
+.card__cta{
+  margin-top:auto;                  /* CTA vždy dole */
+  font-weight:800;
+  font-size:14px;
+  opacity:.95;
+}
+
+/* =========================
+   GALLERY (hover polish)
+   ========================= */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(4, 1fr);
   gap:12px;
+  margin-top:14px;
 }
-.gallery img{
+
+.shot{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.04);
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  transition: transform .12s ease, border-color .2s ease;
+}
+
+.shot:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.22);
+}
+
+.shot img{
   width:100%;
   height:220px;
   object-fit:cover;
-  border-radius:16px;
+  display:block;
+  transition: transform .25s ease;
 }
 
-/* Footer */
-.foot{ margin-top:18px; }
-
-/* Responsive */
-@media (max-width:900px){
-  .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
-  .hero__text, .hero__media{ min-height:220px; }
+.shot:hover img{
+  transform: scale(1.03);
 }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width:980px){
+  .cards{ grid-template-columns:repeat(2, 1fr); }
+  .gallery{ grid-template-columns:repeat(2, 1fr); }
+}
+
+@media (max-width:760px){
+  .hero__grid{ grid-template-columns:1fr; }
+}
+
 @media (max-width:600px){
-  .hero__grid{ grid-template-columns:1fr; gap:16px; }
   .logo-banner{ height:160px; }
-  .hero__text{ padding:18px; min-height:160px; }
-  .hero__media{ min-height:160px; }
-  .hero p{ max-width:48ch; }
 }
+
 @media (max-width:520px){
-  .cards,.gallery{ grid-template-columns:1fr; }
-}
-
-/* Utility */
-.text-muted{ color:var(--muted); }
-.center{ text-align:center; }
-
-/* ------------------------------------------------------------------
-   Custom changes requested:
-   - Make card text white (remove purple/muted coloring).
-   - Remove button background on the card in the first screenshot.
-   - For the second screenshot: stack content vertically centered,
-     remove the thin border/frame (keep the panel background), and
-     center the inner text.
-   These are implemented below. Apply the .hero--stacked class to the
-   hero element you want stacked (see notes after file).
-   ------------------------------------------------------------------ */
-
-/* Ensure card headings / paragraphs are white */
-.card h1,
-.card h2,
-.card h3,
-.card p,
-.card .text-muted {
-  color: var(--text);
-}
-
-/* Make card CTA transparent (no white background) and use white text */
-.card__cta{
-  background: transparent;
-  color: var(--text);
-  border: none; /* remove the white border */
-  box-shadow: none;
-  padding:8px 12px;
-  border-radius:10px;
-}
-
-/* If you want a subtle focus/hover for the CTA, keep this */
-.card__cta:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 18px rgba(0,0,0,.28);
-}
-
-/* Make hero paragraph white as requested */
-.hero p{
-  color: var(--text);
-}
-
-/* Remove border/frame from hero text panel when stacked, keep background */
-.hero--no-frame .hero__text{
-  border: none;
-  box-shadow: var(--shadow); /* keep drop shadow if desired */
-}
-
-/* A helper class to force the hero layout to stacked, centered vertically */
-.hero--stacked .hero__grid{
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-/* When stacked, ensure inner content is vertically stacked and centered */
-.hero--stacked .hero__text{
-  /* remove the visible border but keep the subtle panel background */
-  border: none;
-  background: var(--panel);
-  padding: 28px;
-  min-height: auto;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.hero--stacked .hero__text-inner{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 60ch;
-}
-
-/* If you want the right-side small description (in the two-column layout)
-   to be stacked under the heading when using .hero--stacked, force it to full-width */
-.hero--stacked .hero__media,
-.hero--stacked .hero__text{
-  width: 100%;
-}
-
-/* Optional: make hero heading slightly larger and well-centered in stacked mode */
-.hero--stacked .hero h1{
-  font-size: clamp(30px, 6vw, 56px);
-  line-height: 1.02;
-  margin-bottom: 8px;
+  .cards{ grid-template-columns:1fr; }
+  .gallery{ grid-template-columns:1fr; }
+  .shot img{ height:200px; }
 }
