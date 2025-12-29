@@ -10,17 +10,18 @@
   --max:1100px;
 }
 
+/* ===== RESET ===== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color:var(--text);
   background:var(--bg);
   line-height:1.55;
 }
 
-/* Carbon background */
+/* ===== CARBON BACKGROUND ===== */
 body::before{
   content:"";
   position:fixed;
@@ -33,7 +34,7 @@ body::before{
   z-index:-1;
 }
 
-a{ color:inherit; }
+a{ color:inherit; text-decoration:none; }
 
 .wrap{
   max-width:var(--max);
@@ -41,41 +42,36 @@ a{ color:inherit; }
   padding:0 18px;
 }
 
-/* =========================
-   HEADER (čistý, bez blur)
-   ========================= */
+/* =====================================================
+   HEADER – čistý, bez čar, velké logo
+   ===================================================== */
 .top{
-  background:#000;                  /* neprůhledné – žádné “čáry” */
-  border-bottom:1px solid rgba(255,255,255,0.12);
+  background:#000;
+  border-bottom:1px solid rgba(255,255,255,.12);
   padding:24px 0;
 }
 
 .top__inner{
   display:flex;
   justify-content:center;
-  align-items:center;
 }
 
 .brand{
+  width:100%;
   display:flex;
   justify-content:center;
-  width:100%;
-  text-decoration:none;
 }
 
-/* Banner logo (odpovídá HTML: .logo-banner) */
 .logo-banner{
   width:100%;
   max-width:1200px;
-  height:260px;                     /* ← velikost loga */
+  height:260px;
   object-fit:contain;
-  display:block;
-  margin:0 auto;
 }
 
-/* =========================
-   HERO (bez orámování)
-   ========================= */
+/* =====================================================
+   HERO
+   ===================================================== */
 .hero{ padding:34px 0 18px; }
 
 .hero__grid{
@@ -85,33 +81,27 @@ a{ color:inherit; }
   align-items:stretch;
 }
 
-/* hero text – vycentrování do pole vedle obrázku */
+/* text vycentrovaný do pole vedle obrázku */
 .hero__text{
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-
-  background:none;
-  border:none;
-  border-radius:0;
-  padding:0;
-  box-shadow:none;
 }
 
 .hero__text h1{
   margin:0 0 10px;
   font-size:clamp(28px, 4vw, 44px);
   line-height:1.12;
-  text-shadow: 0 6px 24px rgba(0,0,0,0.85);
+  text-shadow:0 6px 24px rgba(0,0,0,.85);
 }
 
 .hero__text p{
   margin:0;
   color:var(--muted);
   max-width:62ch;
-  text-shadow: 0 4px 16px rgba(0,0,0,0.75);
+  text-shadow:0 4px 16px rgba(0,0,0,.75);
 }
 
 .hero__media{
@@ -128,26 +118,24 @@ a{ color:inherit; }
   height:100%;
   object-fit:cover;
   display:block;
-  filter:contrast(1.05) saturate(1.05);
 }
 
-/* =========================
+/* =====================================================
    SECTIONS
-   ========================= */
+   ===================================================== */
 .section{ padding:26px 0 34px; }
 .section--alt{ padding:30px 0 40px; }
 
 h2{ margin:0 0 10px; font-size:26px; }
 .muted{ color:var(--muted); }
 .tiny{ font-size:13px; }
-.foot{ margin-top:18px; }
 
-/* =========================
+/* =====================================================
    PRODUCT CARDS
-   ========================= */
+   ===================================================== */
 .cards{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
   margin-top:14px;
 }
@@ -155,20 +143,17 @@ h2{ margin:0 0 10px; font-size:26px; }
 .card{
   display:flex;
   flex-direction:column;
-  text-decoration:none;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.14);
   border-radius:16px;
   padding:16px;
   box-shadow:0 10px 28px rgba(0,0,0,.35);
-  transition:transform .10s ease, background .2s ease, border-color .2s ease;
-  min-height:165px;
+  transition:transform .12s ease, background .2s ease;
 }
 
 .card:hover{
   transform:translateY(-2px);
   background:rgba(255,255,255,.09);
-  border-color:rgba(255,255,255,.22);
 }
 
 .card h3{ margin:0 0 6px; font-size:16px; }
@@ -178,126 +163,100 @@ h2{ margin:0 0 10px; font-size:26px; }
   margin-top:auto;
   font-weight:800;
   font-size:14px;
-  opacity:.95;
 }
 
-/* =========================
-   GALLERY
-   ========================= */
+/* =====================================================
+   GALERIE – VIDĚT CELÝ OBRÁZEK
+   ===================================================== */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
   margin-top:14px;
 }
 
 .shot{
-  margin:0;
   border-radius:16px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.04);
+  background:#000;
   box-shadow:0 10px 28px rgba(0,0,0,.35);
-  transition: transform .12s ease, border-color .2s ease;
-}
-
-.shot:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,.22);
 }
 
 .shot img{
   width:100%;
   height:220px;
-  object-fit:cover;
+  object-fit:contain;   /* ← KLÍČ */
+  background:#000;
   display:block;
-  transition: transform .25s ease;
 }
 
-.shot:hover img{
-  transform: scale(1.03);
-}
-
-/* =========================
-   PROVOZOVATEL (innoboats karta)
-   ========================= */
-
-/* kartu chceme uprostřed, ne 4 sloupce */
-.cards--center{
-  display:flex;
-  justify-content:center;
-}
-
-/* karta může být širší než produktové */
-.card--contact{
-  width:min(900px, 100%);
-  min-height:auto;
-}
-
-/* obsah do jednoho řádku */
-.contact-row{
-  flex-direction:row;
+/* =====================================================
+   PROVOZOVATEL E-SHOPU (1 ŘÁDEK)
+   ===================================================== */
+.operator{
+  margin-top:28px;
+  padding:18px 22px;
+  border-radius:16px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
   align-items:center;
   gap:18px;
 }
 
-/* logo */
-.contact-logo{
-  width:170px;
-  height:70px;
+.operator img{
+  height:40px;
+  width:auto;
   object-fit:contain;
-  flex:0 0 auto;
 }
 
-/* text uprostřed */
-.contact-text{
-  flex:1 1 auto;
-  color:var(--text);
-  line-height:1.35;
+.operator__text{
+  font-weight:600;
 }
 
-/* odkazy napravo */
-.contact-links{
+.operator__links{
   display:flex;
-  flex-direction:column;
-  gap:6px;
-  text-align:right;
-  flex:0 0 auto;
+  gap:18px;
+  white-space:nowrap;
 }
 
-.contact-links a{
+.operator__links a{
+  color:var(--muted);
+}
+
+.operator__links a:hover{
   color:var(--text);
-  text-decoration:none;
-  opacity:.92;
 }
 
-.contact-links a:hover{
-  text-decoration:underline;
-  opacity:1;
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.site-footer{
+  text-align:center;
+  padding:24px 0 32px;
+  font-size:13px;
+  color:var(--muted);
 }
 
-/* na mobilu to zlomíme pod sebe */
-@media (max-width:760px){
-  .contact-row{
-    flex-direction:column;
-    text-align:center;
-  }
-  .contact-links{
-    text-align:center;
-    align-items:center;
-  }
-}
-
-/* =========================
+/* =====================================================
    RESPONSIVE
-   ========================= */
+   ===================================================== */
 @media (max-width:980px){
-  .cards{ grid-template-columns:repeat(2, 1fr); }
-  .gallery{ grid-template-columns:repeat(2, 1fr); }
+  .cards{ grid-template-columns:repeat(2,1fr); }
+  .gallery{ grid-template-columns:repeat(2,1fr); }
 }
 
 @media (max-width:760px){
   .hero__grid{ grid-template-columns:1fr; }
+  .operator{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .operator__links{
+    justify-content:center;
+  }
 }
 
 @media (max-width:600px){
@@ -308,11 +267,4 @@ h2{ margin:0 0 10px; font-size:26px; }
   .cards{ grid-template-columns:1fr; }
   .gallery{ grid-template-columns:1fr; }
   .shot img{ height:200px; }
-}
-
-.site-footer{
-  text-align:center;
-  padding:24px 0 32px;
-  font-size:13px;
-  color:var(--muted);
 }
