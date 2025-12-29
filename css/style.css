@@ -86,16 +86,21 @@ a{ color:inherit; }
 }
 
 /* hero text bez “karty” */
-/* hero text bez “karty” */
+/* hero text – vycentrování do pole vedle obrázku */
 .hero__text{
-  background:none;
-  border:none;
-  border-radius:0;
-  padding:0;
-  box-shadow:none;
+  display: flex;              /* důležité */
+  flex-direction: column;     /* h1 nad p */
+  justify-content: center;    /* svisle na střed */
+  align-items: center;        /* vodorovně na střed */
+
+  text-align: center;         /* text zarovnaný na střed */
+
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
-
-
 .hero__text h1{
   margin:0 0 10px;
   font-size:clamp(28px, 4vw, 44px);
