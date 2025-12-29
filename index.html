@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NovakFeeder.cz</title>
-  <meta name="description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovakFeeder." />
-  <link rel="stylesheet" href="css/style.css?v=13" />
+  <meta name="description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovákFeeder." />
+  <link rel="stylesheet" href="css/style.css?v=9" />
 </head>
 
 <body>
@@ -14,7 +14,6 @@
       <a class="brand" href="#" aria-label="NovakFeeder.cz">
         <img class="logo-banner" src="assets/logo-transparent.png" alt="NovakFeeder.cz – logo" />
       </a>
-      <!-- Navigace schovaná (dřív Produkty / Galerie). Když ji budeš chtít zpět, řekni. -->
     </div>
   </header>
 
@@ -23,11 +22,11 @@
       <div class="wrap hero__grid">
         <div class="hero__text">
           <h1>Method feeder bez kompromisů.</h1>
-          <p>Nástrahy, směsi a atraktory NovakFeeder pro spolehlivý lov u vody.</p>
+          <p>Nástrahy, směsi a atraktory NovákFeeder pro spolehlivý lov u vody.</p>
         </div>
 
         <div class="hero__media" aria-label="Produktová fotografie">
-          <img src="assets/gallery-fluo3.jpg" alt="NovakFeeder – produktová fotografie" />
+          <img src="assets/gallery-fluo3.jpg" alt="NovákFeeder – produktová fotografie" />
         </div>
       </div>
     </section>
@@ -35,12 +34,12 @@
     <section id="produkty" class="section" aria-label="Produkty">
       <div class="wrap">
         <h2>Produkty</h2>
-        <p class="muted">Vybrané kategorie značky NovakFeeder.</p>
+        <p class="muted">Kategorie NovákFeeder.</p>
 
         <div class="cards">
           <a class="card" href="https://www.innoboats.cz/nastrahy-pro-method-feeder/" target="_blank" rel="noopener">
             <h3>Nástrahy pro method feeder</h3>
-            <p>Wafters, pop-up a další.</p>
+            <p>Wafters, pop-up, a další.</p>
             <span class="card__cta">Otevřít kategorii →</span>
           </a>
 
@@ -68,7 +67,7 @@
     <section id="galerie" class="section section--alt" aria-label="Galerie">
       <div class="wrap">
         <h2>Galerie</h2>
-        <p class="muted">Ukázky produktů NovakFeeder.</p>
+        <p class="muted">Ukázky produktů NovákFeeder.</p>
 
         <div class="gallery">
           <figure class="shot">
@@ -84,57 +83,42 @@
             <img src="assets/gallery-spray5.jpg" alt="NovakFeeder – spray" loading="lazy" />
           </figure>
         </div>
-
-       
       </div>
-    </section>   <!-- konec Galerie -->
+    </section>
 
-<!-- ⬇️ SEM VLOŽ NOVOU SEKCI PROVOZOVATEL ⬇️ -->
+    <section class="section" aria-label="Provozovatel e-shopu">
+      <div class="wrap">
+        <h2 style="text-align:center;">Provozovatel e-shopu</h2>
 
-<section class="section" aria-label="Provozovatel e-shopu">
-  <div class="wrap">
+        <div class="cards cards--center">
+          <div class="card card--contact contact-row">
 
-    <h2 style="text-align:center;">Provozovatel e-shopu</h2>
+            <img
+              src="assets/logo-innoboats.png"
+              alt="innoboats.cz – logo"
+              class="contact-logo"
+              loading="lazy"
+            />
 
-    <div class="cards cards--center">
-      <div class="card card--contact">
+            <div class="contact-text">
+              <strong>innoboats.cz</strong> – oficiální prodejce značky NovakFeeder
+            </div>
 
-        <img
-          src="assets/logo-innoboats.png"
-          alt="innoboats.cz – logo"
-          class="contact-logo"
-        />
+            <div class="contact-links">
+              <a href="https://www.innoboats.cz" target="_blank" rel="noopener">www.innoboats.cz</a>
+              <a href="mailto:obchod@innoboats.cz">obchod@innoboats.cz</a>
+            </div>
 
-        <h3>innoboats.cz</h3>
-
-        <p class="muted">
-          Oficiální prodejce značky NovakFeeder
-        </p>
-
-        <p>
-          🌐
-          <a href="https://www.innoboats.cz" target="_blank" rel="noopener">
-            www.innoboats.cz
-          </a><br>
-          ✉️
-          <a href="mailto:obchod@innoboats.cz">
-            obchod@innoboats.cz
-          </a>
-        </p>
-
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
+    <footer class="site-footer" aria-label="Patička">
+      <p>© <span id="year"></span> NovákFeeder.cz</p>
+    </footer>
 
-<!-- ⬆️ KONEC NOVÉ SEKCE ⬆️ -->
-<footer class="site-footer">
-  <p>© <span id="year"></span> NovákFeeder.cz</p>
-</footer>
-
-</main>
-
+  </main>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
