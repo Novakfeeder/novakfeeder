@@ -86,6 +86,7 @@ a{ color:inherit; }
 }
 
 /* hero text bez “karty” */
+/* hero text bez “karty” */
 .hero__text{
   background:none;
   border:none;
@@ -93,6 +94,7 @@ a{ color:inherit; }
   padding:0;
   box-shadow:none;
 }
+
 
 .hero__text h1{
   margin:0 0 10px;
