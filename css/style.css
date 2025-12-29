@@ -85,22 +85,21 @@ a{ color:inherit; }
   align-items:stretch;
 }
 
-/* hero text bez “karty” */
 /* hero text – vycentrování do pole vedle obrázku */
 .hero__text{
-  display: flex;              /* důležité */
-  flex-direction: column;     /* h1 nad p */
-  justify-content: center;    /* svisle na střed */
-  align-items: center;        /* vodorovně na střed */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 
-  text-align: center;         /* text zarovnaný na střed */
-
-  background: none;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
+  background:none;
+  border:none;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
 }
+
 .hero__text h1{
   margin:0 0 10px;
   font-size:clamp(28px, 4vw, 44px);
@@ -144,7 +143,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 .foot{ margin-top:18px; }
 
 /* =========================
-   PRODUCT CARDS (sjednocené)
+   PRODUCT CARDS
    ========================= */
 .cards{
   display:grid;
@@ -154,7 +153,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 
 .card{
-  display:flex;                     /* aby CTA šlo dolů */
+  display:flex;
   flex-direction:column;
   text-decoration:none;
   background:rgba(255,255,255,.06);
@@ -176,14 +175,14 @@ h2{ margin:0 0 10px; font-size:26px; }
 .card p{ margin:0 0 12px; color:var(--muted); font-size:14px; }
 
 .card__cta{
-  margin-top:auto;                  /* CTA vždy dole */
+  margin-top:auto;
   font-weight:800;
   font-size:14px;
   opacity:.95;
 }
 
 /* =========================
-   GALLERY (hover polish)
+   GALLERY
    ========================= */
 .gallery{
   display:grid;
@@ -220,6 +219,76 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 
 /* =========================
+   PROVOZOVATEL (innoboats karta)
+   ========================= */
+
+/* kartu chceme uprostřed, ne 4 sloupce */
+.cards--center{
+  display:flex;
+  justify-content:center;
+}
+
+/* karta může být širší než produktové */
+.card--contact{
+  width:min(900px, 100%);
+  min-height:auto;
+}
+
+/* obsah do jednoho řádku */
+.contact-row{
+  flex-direction:row;
+  align-items:center;
+  gap:18px;
+}
+
+/* logo */
+.contact-logo{
+  width:170px;
+  height:70px;
+  object-fit:contain;
+  flex:0 0 auto;
+}
+
+/* text uprostřed */
+.contact-text{
+  flex:1 1 auto;
+  color:var(--text);
+  line-height:1.35;
+}
+
+/* odkazy napravo */
+.contact-links{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-align:right;
+  flex:0 0 auto;
+}
+
+.contact-links a{
+  color:var(--text);
+  text-decoration:none;
+  opacity:.92;
+}
+
+.contact-links a:hover{
+  text-decoration:underline;
+  opacity:1;
+}
+
+/* na mobilu to zlomíme pod sebe */
+@media (max-width:760px){
+  .contact-row{
+    flex-direction:column;
+    text-align:center;
+  }
+  .contact-links{
+    text-align:center;
+    align-items:center;
+  }
+}
+
+/* =========================
    RESPONSIVE
    ========================= */
 @media (max-width:980px){
@@ -240,9 +309,10 @@ h2{ margin:0 0 10px; font-size:26px; }
   .gallery{ grid-template-columns:1fr; }
   .shot img{ height:200px; }
 }
+
 .site-footer{
-  text-align: center;
-  padding: 24px 0 32px;
-  font-size: 13px;
-  color: var(--muted);
+  text-align:center;
+  padding:24px 0 32px;
+  font-size:13px;
+  color:var(--muted);
 }
