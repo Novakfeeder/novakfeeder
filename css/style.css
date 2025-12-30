@@ -157,8 +157,8 @@ h2{ margin:0 0 10px; font-size:26px; }
   background-image:var(--img);
   background-size:cover;
   background-position:center;
-  filter:blur(18px) brightness(.55);
-  transform:scale(1.15);
+  filter: blur(10px) brightness(.45);
+transform: scale(1.05);
 }
 
 /* skutečná fotka – CELÁ, neořezaná */
