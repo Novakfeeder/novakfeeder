@@ -261,5 +261,5 @@ h2{ font-size:26px; margin:0 0 10px; }
 
 .gallery .shot:first-child img{
   object-fit:contain;               /* vidět celý obrázek */
-  transform:scale(.92);             /* lehké oddálení */
+  transform:scale(.96);             /* lehké oddálení */
 }
