@@ -286,3 +286,54 @@ h2{ margin:0 0 10px; font-size:26px; }
   .gallery{ grid-template-columns:1fr; }
   .shot img{ height:200px; }
 }
+/* === FIX: GALERIE + PROVOZOVATEL (jen CSS, bez ořezu fotek) === */
+
+/* GALERIE: stejné karty, celý obrázek, karta "plná" */
+#galerie .shot{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+#galerie .shot::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) brightness(.55);
+  transform: scale(1.12);
+  z-index: 0;
+}
+
+#galerie .shot img{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;      /* NIC se neřeže */
+  background: transparent;  /* žádné okraje */
+  display: block;
+}
+
+/* PROVOZOVATEL: web + email vedle sebe (desktop) */
+.operator__links{
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  justify-content: flex-end;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Mobil: pod sebe */
+@media (max-width:760px){
+  .operator__links{
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+    white-space: normal;
+  }
+}
