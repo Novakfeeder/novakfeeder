@@ -263,3 +263,9 @@ h2{ font-size:26px; margin:0 0 10px; }
   object-fit:contain;               /* vidět celý obrázek */
   transform:scale(.96);             /* lehké oddálení */
 }
+/* 1. fotka – blíž, lehce ořízlá, ale okraje kelímků vidět */
+.gallery .shot:first-child img{
+  object-fit:cover;
+  object-position:center 55%;
+  transform:scale(1.06);
+}
