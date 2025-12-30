@@ -12,41 +12,41 @@
 html,body{ height:100%; }
 body{
   margin:0;
-  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   color:var(--text);
   background:var(--bg);
   line-height:1.55;
 }
 
-/* ===== CARBON BACKGROUND (JEMNĚJŠÍ) ===== */
+/* ===== CARBON BACKGROUND (VÝRAZNĚ JEMNĚJŠÍ) ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
-  opacity:.14; /* méně kontrastu */
+  opacity:.08;
   background:
-    radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.04), transparent 62%),
-    radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.03), transparent 58%),
+    radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.025), transparent 65%),
+    radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.02), transparent 62%),
     linear-gradient(45deg,
-      rgba(255,255,255,.04) 25%,
+      rgba(255,255,255,.022) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.04) 50%,
-      rgba(255,255,255,.04) 75%,
+      rgba(255,255,255,.022) 50%,
+      rgba(255,255,255,.022) 75%,
       transparent 75%,
       transparent),
     linear-gradient(-45deg,
-      rgba(255,255,255,.03) 25%,
+      rgba(255,255,255,.016) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.03) 50%,
-      rgba(255,255,255,.03) 75%,
+      rgba(255,255,255,.016) 50%,
+      rgba(255,255,255,.016) 75%,
       transparent 75%,
       transparent);
-  background-size:auto, auto, 24px 24px, 24px 24px; /* jemnější vzor (větší dlaždice) */
-  filter:contrast(1.02) saturate(.9); /* méně “řve” */
+  background-size:auto, auto, 34px 34px, 34px 34px;
+  filter:contrast(1);
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -131,7 +131,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   background:rgba(255,255,255,.09);
 }
 
-/* ===== GALERIE (VĚTŠÍ + ČISTÁ, BEZ “ROZJETÉHO” EFEKTU) ===== */
+/* ===== GALERIE (STEJNÝ PRINCIP JAKO DŘÍV, JEN KLIDNĚJŠÍ) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -141,7 +141,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 .shot{
   position:relative;
-  height:300px; /* větší fotky */
+  height:300px;
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -149,19 +149,27 @@ h2{ margin:0 0 10px; font-size:26px; }
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 
-/* vypnout rozmazané pozadí (rozjetý efekt) */
+/* pozadí z fotky – jemné, stabilní */
 .shot::before{
-  content:none;
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:var(--img);
+  background-size:cover;
+  background-position:center;
+  filter:blur(6px) brightness(.42);
+  opacity:.55;
 }
 
-/* skutečná fotka – CELÁ, neořezaná + jemné vnitřní odsazení */
+/* hlavní fotka – CELÁ, větší, neořezaná */
 .shot img{
   position:relative;
+  z-index:1;
   width:100%;
   height:100%;
   object-fit:contain;
+  padding:10px;
   display:block;
-  padding:12px;
 }
 
 /* ===== OPERATOR ===== */
@@ -198,7 +206,6 @@ h2{ margin:0 0 10px; font-size:26px; }
 /* ===== RESPONSIVE ===== */
 @media (max-width:980px){
   .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
-  .shot{ height:300px; }
 }
 @media (max-width:760px){
   .hero__grid{ grid-template-columns:1fr; }
