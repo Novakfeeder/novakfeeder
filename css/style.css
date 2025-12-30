@@ -3,9 +3,10 @@
   --text:#eaeaea;
   --muted:rgba(234,234,234,.72);
   --max:1100px;
+  --radius:16px;
+  --gap:12px;
 }
 
-/* ===== RESET ===== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 body{
@@ -16,7 +17,7 @@ body{
   line-height:1.55;
 }
 
-/* ===== CARBON BACKGROUND ===== */
+/* carbon-ish background */
 body::before{
   content:"";
   position:fixed;
@@ -36,9 +37,7 @@ a{ color:inherit; text-decoration:none; }
   padding:0 18px;
 }
 
-/* =====================================================
-   HEADER – čistý, bez čar, velké logo
-   ===================================================== */
+/* ===== HEADER ===== */
 .top{
   background:#000;
   border-bottom:1px solid rgba(255,255,255,.12);
@@ -63,53 +62,40 @@ a{ color:inherit; text-decoration:none; }
   margin:0 auto;
 }
 
-/* =====================================================
-   HERO (bez orámování)
-   ===================================================== */
+/* ===== HERO ===== */
 .hero{ padding:34px 0 18px; }
-
 .hero__grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
   align-items:stretch;
 }
-
 .hero__text{
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:none;
-  border:none;
-  border-radius:0;
-  padding:0;
-  box-shadow:none;
 }
-
 .hero__text h1{
   margin:0 0 10px;
   font-size:clamp(28px, 4vw, 44px);
   line-height:1.12;
   text-shadow:0 6px 24px rgba(0,0,0,.85);
 }
-
 .hero__text p{
   margin:0;
   color:var(--muted);
   max-width:62ch;
   text-shadow:0 4px 16px rgba(0,0,0,.75);
 }
-
 .hero__media{
-  border-radius:16px;
+  border-radius:var(--radius);
   overflow:hidden;
   background:#000;
   border:1px solid rgba(255,255,255,.14);
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
-
 .hero__media img{
   width:100%;
   height:100%;
@@ -118,49 +104,37 @@ a{ color:inherit; text-decoration:none; }
   filter:contrast(1.05) saturate(1.05);
 }
 
-/* =====================================================
-   SECTIONS
-   ===================================================== */
+/* ===== SECTIONS ===== */
 .section{ padding:26px 0 34px; }
 .section--alt{ padding:30px 0 40px; }
-
 h2{ margin:0 0 10px; font-size:26px; }
 .muted{ color:var(--muted); }
-.tiny{ font-size:13px; }
-.foot{ margin-top:18px; }
 
-/* =====================================================
-   PRODUCT CARDS
-   ===================================================== */
+/* ===== PRODUCT CARDS ===== */
 .cards{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  gap:var(--gap);
   margin-top:14px;
 }
-
 .card{
   display:flex;
   flex-direction:column;
-  text-decoration:none;
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.14);
-  border-radius:16px;
+  border-radius:var(--radius);
   padding:16px;
   box-shadow:0 10px 28px rgba(0,0,0,.35);
   transition:transform .12s ease, background .2s ease, border-color .2s ease;
   min-height:165px;
 }
-
 .card:hover{
   transform:translateY(-2px);
   background:rgba(255,255,255,.09);
   border-color:rgba(255,255,255,.22);
 }
-
 .card h3{ margin:0 0 6px; font-size:16px; }
 .card p{ margin:0 0 10px; color:var(--muted); }
-
 .card__cta{
   margin-top:auto;
   font-weight:800;
@@ -168,19 +142,19 @@ h2{ margin:0 0 10px; font-size:26px; }
   opacity:.95;
 }
 
-/* =====================================================
-   GALERIE – stejné boxy, vidět celý obrázek, rohy jako karty
-   ===================================================== */
+/* ===== GALERIE (FINÁLNÍ) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:12px;
+  gap:var(--gap);
   margin-top:14px;
 }
 
 .shot{
   margin:0;
-  border-radius:16px;
+  position:relative;
+  height:220px;
+  border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
   background:#000;
@@ -193,20 +167,29 @@ h2{ margin:0 0 10px; font-size:26px; }
   border-color:rgba(255,255,255,.22);
 }
 
-.shot img{
-  width:100%;
-  height:220px;          /* stejné rozměry */
-  object-fit:contain;    /* KLÍČ: celý obrázek, neřezat */
-  background:#000;
-  display:block;
-  transition:transform .25s ease;
+/* vyplní kartu bez ořezu: rozmazané pozadí z té samé fotky */
+.shot::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:var(--img);
+  background-size:cover;
+  background-position:center;
+  filter:blur(18px) brightness(.55);
+  transform:scale(1.15);
+  z-index:0;
 }
 
-.shot:hover img{ transform:scale(1.03); }
+.shot img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;  /* nic se neřeže */
+  display:block;
+}
 
-/* =====================================================
-   PROVOZOVATEL E-SHOPU – OPRAVENO pro tvoje HTML třídy
-   ===================================================== */
+/* ===== PROVOZOVATEL (web + email vedle sebe) ===== */
 .operator-title{
   text-align:center;
 }
@@ -214,7 +197,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 .operator{
   margin-top:18px;
   padding:18px 22px;
-  border-radius:16px;
+  border-radius:var(--radius);
   background:rgba(255,255,255,.06);
   border:1px solid rgba(255,255,255,.14);
   display:grid;
@@ -236,9 +219,10 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 .operator__links{
   display:flex;
-  flex-direction:column;
-  gap:6px;
-  text-align:right;
+  flex-direction:row;
+  gap:18px;
+  align-items:center;
+  justify-content:flex-end;
   white-space:nowrap;
 }
 
@@ -250,9 +234,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   color:var(--text);
 }
 
-/* =====================================================
-   FOOTER
-   ===================================================== */
+/* ===== FOOTER ===== */
 .site-footer{
   text-align:center;
   padding:24px 0 32px;
@@ -260,9 +242,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   color:var(--muted);
 }
 
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
+/* ===== RESPONSIVE ===== */
 @media (max-width:980px){
   .cards{ grid-template-columns:repeat(2,1fr); }
   .gallery{ grid-template-columns:repeat(2,1fr); }
@@ -277,63 +257,17 @@ h2{ margin:0 0 10px; font-size:26px; }
   }
 
   .operator__links{
-    text-align:center;
-    align-items:center;
+    justify-content:center;
   }
 }
 
 @media (max-width:600px){
   .gallery{ grid-template-columns:1fr; }
-  .shot img{ height:200px; }
-}
-/* === FIX: GALERIE + PROVOZOVATEL (jen CSS, bez ořezu fotek) === */
-
-/* GALERIE: stejné karty, celý obrázek, karta "plná" */
-#galerie .shot{
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-#galerie .shot::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: var(--img);
-  background-size: cover;
-  background-position: center;
-  filter: blur(18px) brightness(.55);
-  transform: scale(1.12);
-  z-index: 0;
-}
-
-#galerie .shot img{
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 220px;
-  object-fit: contain;      /* NIC se neřeže */
-  background: transparent;  /* žádné okraje */
-  display: block;
-}
-
-/* PROVOZOVATEL: web + email vedle sebe (desktop) */
-.operator__links{
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  justify-content: flex-end;
-  align-items: center;
-  white-space: nowrap;
-}
-
-/* Mobil: pod sebe */
-@media (max-width:760px){
+  .shot{ height:200px; }
+  .cards{ grid-template-columns:1fr; }
   .operator__links{
-    flex-direction: column;
-    gap: 6px;
-    justify-content: center;
-    align-items: center;
-    white-space: normal;
+    flex-direction:column;
+    gap:6px;
+    white-space:normal;
   }
 }
