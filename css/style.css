@@ -26,32 +26,32 @@ body::before{
   z-index:-1;
   pointer-events:none;
 
-  /* aby byl jemný, ale nezmizel */
+  /* viditelný, ale méně agresivní než původní */
   opacity:.16;
 
   background:
     radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.04), transparent 60%),
     radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.03), transparent 55%),
     linear-gradient(45deg,
-      rgba(255,255,255,.04) 25%,
+      rgba(255,255,255,.045) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.04) 50%,
-      rgba(255,255,255,.04) 75%,
+      rgba(255,255,255,.045) 50%,
+      rgba(255,255,255,.045) 75%,
       transparent 75%,
       transparent),
     linear-gradient(-45deg,
-      rgba(255,255,255,.03) 25%,
+      rgba(255,255,255,.035) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.03) 50%,
-      rgba(255,255,255,.03) 75%,
+      rgba(255,255,255,.035) 50%,
+      rgba(255,255,255,.035) 75%,
       transparent 75%,
       transparent);
 
-  /* jemnější vzor */
-  background-size:auto, auto, 28px 28px, 28px 28px;
-  filter:contrast(1.02);
+  /* jemnější vzor než 18px (původní), ale pořád čitelný */
+  background-size:auto, auto, 22px 22px, 22px 22px;
+  filter:contrast(1.06);
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -136,7 +136,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   background:rgba(255,255,255,.09);
 }
 
-/* ===== GALERIE (FINÁL – FUNKČNÍ JAKO DŘÍV, VĚTŠÍ, BEZ ROZJETÍ) ===== */
+/* ===== GALERIE (NÁVRAT NA PŮVODNÍ FUNKČNÍ STAV, BEZ “ROZJETÍ”) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -146,7 +146,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 .shot{
   position:relative;
-  height:320px; /* větší fotky */
+  height:240px; /* PŮVODNÍ výška, která ti už jednou seděla */
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -154,7 +154,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 
-/* rozmazané pozadí z fotky – KLIDNÉ (bez scale/rozjetí) */
+/* rozmazané pozadí z fotky – JEMNÉ a HLAVNĚ BEZ SCALE (to byl “rozjetý” efekt) */
 .shot::before{
   content:"";
   position:absolute;
@@ -162,12 +162,12 @@ h2{ margin:0 0 10px; font-size:26px; }
   background-image:var(--img);
   background-size:cover;
   background-position:center;
-  filter: blur(8px) brightness(.25);
-  transform:none;
-  opacity:.35;
+  filter: blur(8px) brightness(.38);
+  transform:none;            /* KLÍČ: žádné zvětšování */
+  opacity:.55;               /* jen jemné “vyplnění” okrajů */
 }
 
-/* skutečná fotka – CELÁ, neořezaná, bez “utopení” */
+/* skutečná fotka – CELÁ, neořezaná */
 .shot img{
   position:relative;
   width:100%;
@@ -218,6 +218,6 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 @media (max-width:600px){
   .cards,.gallery{ grid-template-columns:1fr; }
-  .shot{ height:300px; }
+  .shot{ height:220px; } /* původní mobilní */
   .operator__links{ flex-direction:column; }
 }
