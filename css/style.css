@@ -233,3 +233,33 @@ h2{ font-size:26px; margin:0 0 10px; }
   :root{ --tile:240px; }
   .operator__links{ flex-direction:column; }
 }
+/* === DOLADĚNÍ: PRODUKTOVÉ KARTY – všechny stejně (i když je nadpis kratší) === */
+.card h3{
+  width:100%;
+  text-align:center;
+  min-height:2.6em;                 /* drží stejnou výšku nadpisu (1–2 řádky) */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card p{
+  width:100%;
+  text-align:center;
+  min-height:2.4em;                 /* drží stejnou výšku popisu */
+}
+
+.card__cta{
+  width:100%;
+  text-align:center;
+}
+
+/* === DOLADĚNÍ: 1. fotka v galerii – lehce oddálit + vidět celou === */
+.gallery .shot:first-child{
+  background:#000;
+}
+
+.gallery .shot:first-child img{
+  object-fit:contain;               /* vidět celý obrázek */
+  transform:scale(.92);             /* lehké oddálení */
+}
