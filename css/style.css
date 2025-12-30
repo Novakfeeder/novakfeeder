@@ -45,7 +45,7 @@ body::before{
       rgba(255,255,255,.045) 75%,
       transparent 75%,
       transparent);
-  background-size:auto, auto, 38px 38px, 38px 38px;
+  background-size:auto, auto, 18px 18px, 18px 18px;
   filter:contrast(1.15);
 }
 
