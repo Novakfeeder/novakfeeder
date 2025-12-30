@@ -12,41 +12,46 @@
 html,body{ height:100%; }
 body{
   margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
   color:var(--text);
   background:var(--bg);
   line-height:1.55;
 }
 
-/* ===== CARBON BACKGROUND (VÝRAZNĚ JEMNĚJŠÍ) ===== */
+/* ===== CARBON BACKGROUND (JEMNĚJŠÍ, ALE VIDITELNÝ) ===== */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   z-index:-1;
   pointer-events:none;
-  opacity:.08;
+
+  /* aby byl jemný, ale nezmizel */
+  opacity:.16;
+
   background:
-    radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.025), transparent 65%),
-    radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.02), transparent 62%),
+    radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.04), transparent 60%),
+    radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.03), transparent 55%),
     linear-gradient(45deg,
-      rgba(255,255,255,.022) 25%,
+      rgba(255,255,255,.04) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.022) 50%,
-      rgba(255,255,255,.022) 75%,
+      rgba(255,255,255,.04) 50%,
+      rgba(255,255,255,.04) 75%,
       transparent 75%,
       transparent),
     linear-gradient(-45deg,
-      rgba(255,255,255,.016) 25%,
+      rgba(255,255,255,.03) 25%,
       transparent 25%,
       transparent 50%,
-      rgba(255,255,255,.016) 50%,
-      rgba(255,255,255,.016) 75%,
+      rgba(255,255,255,.03) 50%,
+      rgba(255,255,255,.03) 75%,
       transparent 75%,
       transparent);
-  background-size:auto, auto, 34px 34px, 34px 34px;
-  filter:contrast(1);
+
+  /* jemnější vzor */
+  background-size:auto, auto, 28px 28px, 28px 28px;
+  filter:contrast(1.02);
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -131,7 +136,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   background:rgba(255,255,255,.09);
 }
 
-/* ===== GALERIE (STEJNÝ PRINCIP JAKO DŘÍV, JEN KLIDNĚJŠÍ) ===== */
+/* ===== GALERIE (FINÁL – FUNKČNÍ JAKO DŘÍV, VĚTŠÍ, BEZ ROZJETÍ) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -141,7 +146,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 .shot{
   position:relative;
-  height:300px;
+  height:320px; /* větší fotky */
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -149,7 +154,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 
-/* pozadí z fotky – jemné, stabilní */
+/* rozmazané pozadí z fotky – KLIDNÉ (bez scale/rozjetí) */
 .shot::before{
   content:"";
   position:absolute;
@@ -157,18 +162,17 @@ h2{ margin:0 0 10px; font-size:26px; }
   background-image:var(--img);
   background-size:cover;
   background-position:center;
-  filter:blur(6px) brightness(.42);
-  opacity:.55;
+  filter: blur(8px) brightness(.25);
+  transform:none;
+  opacity:.35;
 }
 
-/* hlavní fotka – CELÁ, větší, neořezaná */
+/* skutečná fotka – CELÁ, neořezaná, bez “utopení” */
 .shot img{
   position:relative;
-  z-index:1;
   width:100%;
   height:100%;
   object-fit:contain;
-  padding:10px;
   display:block;
 }
 
@@ -214,6 +218,6 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 @media (max-width:600px){
   .cards,.gallery{ grid-template-columns:1fr; }
-  .shot{ height:280px; }
+  .shot{ height:300px; }
   .operator__links{ flex-direction:column; }
 }
