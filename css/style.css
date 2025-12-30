@@ -1,10 +1,13 @@
 :root{
-  --bg:#000;
+  --bg:#0b0c0f;                 /* původní základ (ne čistá černá) */
   --text:#eaeaea;
   --muted:rgba(234,234,234,.72);
   --max:1100px;
   --radius:16px;
   --gap:12px;
+
+  /* jednotná výška dlaždic (karty + galerie) */
+  --tileH:168px;
 }
 
 /* ===== RESET ===== */
@@ -18,7 +21,7 @@ body{
   line-height:1.55;
 }
 
-/* ===== CARBON BACKGROUND (JEMNĚJŠÍ, ALE VIDITELNÝ) ===== */
+/* ===== PŮVODNÍ KARBON (JÁDRO ŘEŠENÍ) ===== */
 body::before{
   content:"";
   position:fixed;
@@ -26,32 +29,18 @@ body::before{
   z-index:-1;
   pointer-events:none;
 
-  /* viditelný, ale méně agresivní než původní */
-  opacity:.16;
-
   background:
-    radial-gradient(1200px 700px at 18% 0%, rgba(255,255,255,.04), transparent 60%),
-    radial-gradient(900px 520px at 85% 12%, rgba(255,255,255,.03), transparent 55%),
-    linear-gradient(45deg,
-      rgba(255,255,255,.045) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255,255,255,.045) 50%,
-      rgba(255,255,255,.045) 75%,
-      transparent 75%,
-      transparent),
-    linear-gradient(-45deg,
-      rgba(255,255,255,.035) 25%,
-      transparent 25%,
-      transparent 50%,
-      rgba(255,255,255,.035) 50%,
-      rgba(255,255,255,.035) 75%,
-      transparent 75%,
-      transparent);
-
-  /* jemnější vzor než 18px (původní), ale pořád čitelný */
-  background-size:auto, auto, 22px 22px, 22px 22px;
-  filter:contrast(1.06);
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.72)),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,.05) 0 2px,
+      transparent 2px 8px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.03) 0 2px,
+      transparent 2px 10px
+    );
 }
 
 a{ color:inherit; text-decoration:none; }
@@ -64,7 +53,7 @@ a{ color:inherit; text-decoration:none; }
 
 /* ===== HEADER ===== */
 .top{
-  background:#000;
+  background:#000; /* důležité: oddělení karbonu od headeru */
   border-bottom:1px solid rgba(255,255,255,.12);
   padding:24px 0;
 }
@@ -131,12 +120,13 @@ h2{ margin:0 0 10px; font-size:26px; }
   border-radius:var(--radius);
   padding:16px;
   box-shadow:0 10px 28px rgba(0,0,0,.35);
+  min-height:var(--tileH); /* stejné jako galerie */
 }
 .card:hover{
   background:rgba(255,255,255,.09);
 }
 
-/* ===== GALERIE (NÁVRAT NA PŮVODNÍ FUNKČNÍ STAV, BEZ “ROZJETÍ”) ===== */
+/* ===== GALERIE (STEJNÁ VÝŠKA JAKO KARTY, NEOŘEZANÉ) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -146,7 +136,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 .shot{
   position:relative;
-  height:240px; /* PŮVODNÍ výška, která ti už jednou seděla */
+  height:var(--tileH); /* ← stejné jako karty nahoře */
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
@@ -154,7 +144,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
 
-/* rozmazané pozadí z fotky – JEMNÉ a HLAVNĚ BEZ SCALE (to byl “rozjetý” efekt) */
+/* jemné pozadí z fotky – BEZ rozjetí */
 .shot::before{
   content:"";
   position:absolute;
@@ -162,9 +152,9 @@ h2{ margin:0 0 10px; font-size:26px; }
   background-image:var(--img);
   background-size:cover;
   background-position:center;
-  filter: blur(8px) brightness(.38);
-  transform:none;            /* KLÍČ: žádné zvětšování */
-  opacity:.55;               /* jen jemné “vyplnění” okrajů */
+  filter: blur(8px) brightness(.35);
+  transform:none;
+  opacity:.55;
 }
 
 /* skutečná fotka – CELÁ, neořezaná */
@@ -210,6 +200,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 /* ===== RESPONSIVE ===== */
 @media (max-width:980px){
   .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
+  :root{ --tileH:176px; } /* aby to na tabletu nebylo moc nízké */
 }
 @media (max-width:760px){
   .hero__grid{ grid-template-columns:1fr; }
@@ -218,6 +209,6 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 @media (max-width:600px){
   .cards,.gallery{ grid-template-columns:1fr; }
-  .shot{ height:220px; } /* původní mobilní */
+  :root{ --tileH:210px; } /* mobil: víc místa */
   .operator__links{ flex-direction:column; }
 }
