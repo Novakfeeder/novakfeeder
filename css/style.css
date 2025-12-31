@@ -299,3 +299,17 @@ h2{ margin:0 0 10px; font-size:26px; }
   }
 
 }
+/* === MOBIL ONLY: Produkty – zrušení pevné výšky karet === */
+@media (max-width:600px){
+  #produkty .card{
+    height:auto !important;
+    min-height:0 !important;
+    padding:14px 12px !important;
+    gap:8px !important;
+    justify-content:flex-start !important;
+  }
+  #produkty .card h3,
+  #produkty .card p{
+    min-height:0 !important;
+  }
+}
