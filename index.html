@@ -5,30 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>NovákFeeder.cz | Method feeder bez kompromisů</title>
-  <meta name="description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovákFeeder pro úspěšný  lov u vody." />
+  <meta name="description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovákFeeder pro úspěšný lov u vody.">
+  <link rel="stylesheet" href="css/style.css?v=66" />
 
-  <link rel="canonical" href="https://novakfeeder.cz/" />
-
-  <!-- Open Graph -->
+  <!-- SEO + Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://novakfeeder.cz/">
   <meta property="og:title" content="NovákFeeder.cz | Method feeder bez kompromisů">
-  <meta property="og:description" content="Nástrahy, vnadící směsi, atraktory a doplňky NovákFeeder pro úspěšný lov u vody.">
-  <meta property="og:image" content="https://novakfeeder.cz/assets/logo_og.png">
+  <meta property="og:description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovákFeeder pro úspěšný lov u vody.">
+  <meta property="og:image" content="https://www.novakfeeder.cz/assets/logo_og.jpg?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.novakfeeder.cz">
 
-  <!-- Twitter -->
+  <!-- Twitter karta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NovákFeeder.cz | Method feeder bez kompromisů">
-  <meta name="twitter:description" content="Nástrahy, směsi a atraktory NovákFeeder pro spolehlivý lov u vody.">
-  <meta name="twitter:image" content="https://novakfeeder.cz/assets/logo_og.png">
+  <meta name="twitter:description" content="Method feeder – nástrahy, vnadící směsi, pelety, atraktory a doplňky NovákFeeder.">
+  <meta name="twitter:image" content="https://www.novakfeeder.cz/assets/logo_og.jpg?v=2">
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/logo-transparent.png" type="image/png">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css?v=66" />
+  <!-- Favicon (volitelné) -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
@@ -50,7 +46,7 @@
 
         <div class="hero__text">
           <h1>Method feeder bez kompromisů.</h1>
-          <p>Nástrahy, směsi a atraktory NovákFeeder pro spolehlivý lov u vody.</p>
+          <p>Nástrahy, směsi a atraktory NovákFeeder pro úspěšný lov u vody.</p>
         </div>
 
         <div class="hero__media" aria-label="Produktová fotografie">
@@ -67,7 +63,6 @@
         <p class="muted">Kategorie značky NovákFeeder.</p>
 
         <div class="cards">
-
           <a class="card" href="https://www.innoboats.cz/nastrahy-pro-method-feeder/" target="_blank" rel="noopener">
             <h3>Nástrahy pro method feeder</h3>
             <p>Wafters, pop-up a další.</p>
@@ -91,7 +86,6 @@
             <p>Praktické doplňky a příslušenství.</p>
             <span class="card__cta">Otevřít kategorii →</span>
           </a>
-
         </div>
       </div>
     </section>
@@ -122,13 +116,16 @@
     <!-- ================= OPERÁTOR ================= -->
     <section class="section" aria-label="Provozovatel e-shopu">
       <div class="wrap">
+
         <h2 class="operator-title">Provozovatel e-shopu</h2>
 
         <div class="operator">
           <img class="operator__logo" src="assets/logo-innoboats.png" alt="innoboats.cz – logo" />
+
           <div class="operator__text">
             <strong>innoboats.cz</strong> – oficiální distributor značky NovákFeeder
           </div>
+
           <div class="operator__links">
             <a href="https://www.innoboats.cz" target="_blank" rel="noopener">www.innoboats.cz</a>
             <a href="mailto:obchod@innoboats.cz">obchod@innoboats.cz</a>
@@ -146,10 +143,9 @@
   </footer>
 
   <script>
-    // Dynamický rok ve footeru
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Galerie: nastaví pozadí karty (blur) automaticky podle src obrázku
+    // Galerie – nastaví pozadí podle obrázku
     document.querySelectorAll("#galerie .shot img").forEach(img => {
       img.closest(".shot").style.setProperty("--img", `url("${img.src}")`);
     });
