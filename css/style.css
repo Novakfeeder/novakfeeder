@@ -275,3 +275,27 @@ h2{ margin:0 0 10px; font-size:26px; }
   white-space:nowrap;    /* NIKDY se nezalomí */
   font-size:14px;        /* menší, ať se vejde */
 }
+/* === Produkty: KOMPAKTNĚJŠÍ KARTY POUZE NA MOBILU === */
+@media (max-width:600px){
+
+  .card{
+    padding:10px;        /* méně vzduchu */
+    gap:6px;
+  }
+
+  .card h3{
+    min-height:auto;
+    font-size:16px;
+  }
+
+  .card p{
+    min-height:auto;
+    font-size:14px;
+  }
+
+  .card__cta{
+    margin-top:4px;
+    font-size:14px;
+  }
+
+}
