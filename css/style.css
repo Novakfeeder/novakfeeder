@@ -313,3 +313,26 @@ h2{ margin:0 0 10px; font-size:26px; }
     min-height:0 !important;
   }
 }
+/* === MOBIL: Provozovatel e-shopu – oprava rozložení (na střed) === */
+@media (max-width:600px){
+  .operator{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:12px !important;
+  }
+
+  .operator__logo{
+    margin:0 auto !important;
+  }
+
+  .operator__links{
+    width:100% !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    gap:8px !important;
+    white-space:normal !important;
+  }
+}
