@@ -434,3 +434,17 @@ h2{ margin:0 0 10px; font-size:26px; }
     padding:12px 0;    /* zmenší horní černý pruh */
   }
 }
+/* === MOBIL: radikální zmenšení horního loga === */
+@media (max-width:600px){
+
+  .top{
+    padding:8px 0;            /* výrazně menší horní pruh */
+  }
+
+  .logo-banner{
+    max-width:160px;          /* HLAVNÍ zmenšení */
+    max-height:70px;          /* stop proti výšce */
+    height:auto;
+    margin:0 auto;            /* jistota vycentrování */
+  }
+}
