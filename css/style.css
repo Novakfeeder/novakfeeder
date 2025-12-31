@@ -269,3 +269,57 @@ h2{ margin:0 0 10px; font-size:26px; }
 .cards .card p{
   min-height:2.1em;
 }
+/* === MOBILNÍ DOLADĚNÍ (iPhone) === */
+@media (max-width:600px){
+
+  /* celkově kratší dlaždice */
+  :root{
+    --tile:170px; /* bylo 240 */
+  }
+
+  /* sekce blíž k sobě */
+  .section{
+    padding:16px 0 20px;
+  }
+
+  /* PRODUKTY – méně prázdna */
+  .cards .card{
+    padding:12px;
+    gap:6px;
+  }
+
+  .cards .card h3{
+    min-height:2.1em;
+    font-size:18px;
+  }
+
+  .cards .card p{
+    min-height:2em;
+    font-size:14px;
+  }
+
+  .cards .card__cta{
+    font-size:14px;
+  }
+
+  /* GALERIE – fotky méně vysoké */
+  .gallery .shot{
+    height:190px;
+  }
+
+  /* OPERÁTOR – méně vzduchu */
+  .operator{
+    padding:16px;
+    gap:12px;
+  }
+
+  .operator__logo{
+    width:140px;
+    height:auto;
+  }
+
+  /* FOOTER – opticky lehčí */
+  .site-footer{
+    padding:18px 0 22px;
+  }
+}
