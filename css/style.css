@@ -190,12 +190,13 @@ h2{ margin:0 0 10px; font-size:26px; }
   display:block;
 }
 
-/* 1. fotka: vidět okraje kelímků, bez ořezu, ale blíž než čisté contain */
+/* 1. fotka: sjednocení s ostatními (duplex) */
+/* CHANGE: dříve padding + contain -> dělalo to malou fotku */
 .gallery .shot:first-child{
-  padding:6px;
+  padding:0; /* CHANGE */
 }
 .gallery .shot:first-child img{
-  object-fit:contain;
+  object-fit:cover; /* CHANGE */
 }
 
 /* ===== OPERATOR ===== */
