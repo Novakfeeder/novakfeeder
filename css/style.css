@@ -249,3 +249,23 @@ h2{ margin:0 0 10px; font-size:26px; }
   :root{ --tile:240px; }
   .operator__links{ flex-direction:column; }
 }
+/* === Produkty: sjednocení výšky a spodní linie CTA === */
+
+/* CTA vždy dole – karty v jedné linii */
+.cards .card__cta{
+  margin-top:auto;
+}
+
+/* lehce kompaktnější karty (méně zbytečné výšky) */
+.cards .card{
+  padding:14px;
+  gap:8px;
+}
+
+/* jemné sjednocení textových bloků */
+.cards .card h3{
+  min-height:2.3em;
+}
+.cards .card p{
+  min-height:2.1em;
+}
