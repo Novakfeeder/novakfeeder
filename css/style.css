@@ -448,3 +448,15 @@ h2{ margin:0 0 10px; font-size:26px; }
     margin:0 auto;            /* jistota vycentrování */
   }
 }
+/* === MOBIL: ZMENŠIT LOGO V HLAVIČCE NATVRDO === */
+@media (max-width:600px){
+  .top{ padding:8px 0 !important; }
+
+  img.logo-banner{
+    height:70px !important;      /* přebije původních 260px */
+    width:auto !important;
+    max-width:160px !important;
+    object-fit:contain !important;
+    margin:0 auto !important;
+  }
+}
