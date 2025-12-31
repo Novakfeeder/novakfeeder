@@ -422,3 +422,15 @@ h2{ margin:0 0 10px; font-size:26px; }
     white-space:normal !important; /* přebije desktop nowrap */
   }
 }
+/* === MOBIL: zmenšení horního loga NovákFeeder === */
+@media (max-width:600px){
+  .logo-banner{
+    max-width:240px;   /* šířka loga – klidně 220–260 */
+    height:auto;       /* zruší pevnou výšku */
+    max-height:120px;  /* pojistka, aby nebylo vysoké */
+  }
+
+  .top{
+    padding:12px 0;    /* zmenší horní černý pruh */
+  }
+}
