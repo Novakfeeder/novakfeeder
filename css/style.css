@@ -30,7 +30,7 @@ a{ color:inherit; text-decoration:none; }
   padding:0 18px;
 }
 
-/* ===== KARBON ===== */
+/* ===== KARBON POZADÍ ===== */
 body::before{
   content:"";
   position:fixed;
@@ -47,7 +47,7 @@ h1,h2,h3,p{ margin:0; }
 h2{ margin:0 0 10px; font-size:26px; }
 .muted{ color:var(--muted); margin:0 0 14px; }
 
-/* ===== HEADER (PC) ===== */
+/* ===== HEADER (PC beze změny) ===== */
 .top{
   background:#000;
   border-bottom:1px solid rgba(255,255,255,.12);
@@ -66,11 +66,13 @@ h2{ margin:0 0 10px; font-size:26px; }
 
 /* ===== HERO ===== */
 .hero{ padding:34px 0 18px; }
+
 .hero__grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .hero__text{
   display:flex;
   flex-direction:column;
@@ -78,21 +80,25 @@ h2{ margin:0 0 10px; font-size:26px; }
   align-items:center;
   text-align:center;
 }
+
 .hero__text h1{
   margin:0 0 10px;
   font-size:clamp(28px,4vw,44px);
   text-shadow:0 6px 24px rgba(0,0,0,.85);
 }
+
 .hero__text p{
   color:var(--muted);
   max-width:62ch;
 }
+
 .hero__media{
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
   box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
+
 .hero__media img{
   width:100%;
   height:100%;
@@ -117,6 +123,7 @@ h2{ margin:0 0 10px; font-size:26px; }
   border-radius:var(--radius);
   box-shadow:0 10px 28px rgba(0,0,0,.35);
   padding:16px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -131,44 +138,43 @@ h2{ margin:0 0 10px; font-size:26px; }
   align-items:center;
   justify-content:center;
 }
+
 .card p{
   min-height:2.4em;
   color:var(--muted);
 }
+
 .card__cta{ opacity:.92; }
 .card:hover{ background:rgba(255,255,255,.09); }
 
-/* ===== GALERIE ===== */
+/* ===== GALERIE (JEDNOTNÁ – ŽÁDNÉ SPECIÁLNÍ CHOVÁNÍ) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:var(--gap);
   margin-top:14px;
 }
+
 .shot{
   height:var(--tile);
+  margin:0;
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid rgba(255,255,255,.14);
   box-shadow:0 10px 28px rgba(0,0,0,.35);
   background:#000;
 }
+
 .shot img{
   width:100%;
   height:100%;
   object-fit:cover;
-}
-
-/* první fotka – bez ořezu */
-.gallery .shot:first-child{
-  padding:6px;
-}
-.gallery .shot:first-child img{
-  object-fit:contain;
+  display:block;
 }
 
 /* ===== OPERÁTOR ===== */
 .operator-title{ margin:0 0 10px; }
+
 .operator{
   margin-top:18px;
   padding:18px 22px;
@@ -180,11 +186,13 @@ h2{ margin:0 0 10px; font-size:26px; }
   align-items:center;
   gap:18px;
 }
+
 .operator__logo{
   width:170px;
   height:70px;
   object-fit:contain;
 }
+
 .operator__links{
   display:flex;
   gap:18px;
@@ -199,19 +207,17 @@ h2{ margin:0 0 10px; font-size:26px; }
   color:var(--muted);
 }
 
-/* ===== RESPONSIVE (tablet) ===== */
+/* ===== TABLET ===== */
 @media (max-width:980px){
   .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
   :root{ --tile:220px; }
 }
+
 @media (max-width:760px){
   .hero__grid{ grid-template-columns:1fr; }
 }
 
-/* =====================================================
-   MOBIL (≤600px) – JEDINÉ ÚPRAVY
-   PC + TABLET ZŮSTÁVAJÍ STEJNÉ
-   ===================================================== */
+/* ===== MOBIL – JEDINÉ ZMĚNY ===== */
 @media (max-width:600px){
 
   :root{ --tile:240px; }
