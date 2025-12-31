@@ -395,3 +395,30 @@ h2{ margin:0 0 10px; font-size:26px; }
   }
 
 }
+/* === MOBIL: Operátor (INNOboats) vycentrovat === */
+@media (max-width:600px){
+  .operator{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+
+    /* pojistky proti gridu */
+    grid-template-columns:none !important;
+    justify-items:center !important;
+  }
+
+  .operator__logo{
+    display:block !important;
+    margin:0 auto 10px auto !important;
+  }
+
+  .operator__links{
+    width:100%;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    white-space:normal !important; /* přebije desktop nowrap */
+  }
+}
