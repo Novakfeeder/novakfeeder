@@ -2,11 +2,14 @@
   --bg:#0b0c0f;
   --text:#eaeaea;
   --muted:rgba(234,234,234,.72);
-  --max:1100px;
+
+  /* PC: trochu užší a kompaktnější */
+  --max:980px;     /* bylo 1100px */
   --radius:16px;
   --gap:12px;
 
-  --tile:200px;
+  /* PC: menší dlaždice */
+  --tile:180px;    /* bylo 200px */
 }
 
 /* ===== RESET ===== */
@@ -47,11 +50,11 @@ h1,h2,h3,p{ margin:0; }
 h2{ margin:0 0 10px; font-size:26px; }
 .muted{ color:var(--muted); margin:0 0 14px; }
 
-/* ===== HEADER (PC beze změny) ===== */
+/* ===== HEADER ===== */
 .top{
   background:#000;
   border-bottom:1px solid rgba(255,255,255,.12);
-  padding:24px 0;
+  padding:18px 0; /* bylo 24px – PC méně vysoké */
 }
 .top__inner{
   display:flex;
@@ -60,12 +63,12 @@ h2{ margin:0 0 10px; font-size:26px; }
 .logo-banner{
   width:100%;
   max-width:1200px;
-  height:260px;
+  height:200px; /* bylo 260px – PC výrazně menší */
   object-fit:contain;
 }
 
 /* ===== HERO ===== */
-.hero{ padding:34px 0 18px; }
+.hero{ padding:24px 0 12px; } /* bylo 34px 0 18px – PC kompaktnější */
 
 .hero__grid{
   display:grid;
@@ -106,7 +109,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 }
 
 /* ===== SECTIONS ===== */
-.section{ padding:26px 0 34px; }
+.section{ padding:22px 0 30px; } /* lehce menší než původně */
 .section--alt{ padding-top:10px; }
 
 /* ===== PRODUKTY ===== */
@@ -147,7 +150,7 @@ h2{ margin:0 0 10px; font-size:26px; }
 .card__cta{ opacity:.92; }
 .card:hover{ background:rgba(255,255,255,.09); }
 
-/* ===== GALERIE (JEDNOTNÁ – ŽÁDNÉ SPECIÁLNÍ CHOVÁNÍ) ===== */
+/* ===== GALERIE (jednotná) ===== */
 .gallery{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -210,14 +213,14 @@ h2{ margin:0 0 10px; font-size:26px; }
 /* ===== TABLET ===== */
 @media (max-width:980px){
   .cards,.gallery{ grid-template-columns:repeat(2,1fr); }
-  :root{ --tile:220px; }
+  :root{ --tile:220px; --max:1100px; } /* tablet může být klidně širší */
 }
 
 @media (max-width:760px){
   .hero__grid{ grid-template-columns:1fr; }
 }
 
-/* ===== MOBIL – JEDINÉ ZMĚNY ===== */
+/* ===== MOBIL ===== */
 @media (max-width:600px){
 
   :root{ --tile:240px; }
@@ -230,9 +233,7 @@ h2{ margin:0 0 10px; font-size:26px; }
     margin:0 auto;
   }
 
-  .cards,.gallery{
-    grid-template-columns:1fr;
-  }
+  .cards,.gallery{ grid-template-columns:1fr; }
 
   .operator{
     display:flex;
@@ -241,9 +242,7 @@ h2{ margin:0 0 10px; font-size:26px; }
     text-align:center;
   }
 
-  .operator__logo{
-    margin-bottom:10px;
-  }
+  .operator__logo{ margin-bottom:10px; }
 
   .operator__links{
     flex-direction:column;
