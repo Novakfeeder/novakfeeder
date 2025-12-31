@@ -250,3 +250,28 @@ h2{ margin:0 0 10px; font-size:26px; }
     white-space:normal;
   }
 }
+/* === Operátor karta – vždy 1 řádek na PC === */
+.operator{
+  display:grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items:center;
+  gap:16px;
+}
+
+.operator__logo{
+  width:160px;
+  height:60px;
+  object-fit:contain;
+}
+
+.operator__text{
+  font-size:15px;        /* lehce menší */
+  line-height:1.4;
+}
+
+.operator__links{
+  display:flex;
+  gap:16px;
+  white-space:nowrap;    /* NIKDY se nezalomí */
+  font-size:14px;        /* menší, ať se vejde */
+}
