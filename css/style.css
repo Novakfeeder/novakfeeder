@@ -323,3 +323,54 @@ h2{ margin:0 0 10px; font-size:26px; }
     padding:18px 0 22px;
   }
 }
+/* === MOBIL: RADIKÁLNÍ ZKRÁCENÍ SCROLLU === */
+@media (max-width:600px){
+
+  /* menší základní dlaždice */
+  :root{
+    --tile:140px;
+  }
+
+  /* sekce hodně k sobě */
+  .section{
+    padding:12px 0 16px;
+  }
+
+  /* HERO – méně vzduchu, ale zůstává silný */
+  .hero{
+    padding:16px 0 8px;
+  }
+
+  .hero__text h1{
+    font-size:24px;
+    margin-bottom:6px;
+  }
+
+  .hero__text p{
+    font-size:14px;
+  }
+
+  /* PRODUKTY – KOMPAKT */
+  .cards .card{
+    padding:10px;
+    gap:4px;
+  }
+
+  .cards .card h3{
+    min-height:auto;
+    font-size:16px;
+    margin-bottom:2px;
+  }
+
+  .cards .card p{
+    min-height:auto;
+    font-size:13px;
+    margin-bottom:4px;
+  }
+
+  .cards .card__cta{
+    font-size:13px;
+    margin-top:auto;
+  }
+
+  /* GALERIE – výrazně nižší*
