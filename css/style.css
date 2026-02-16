@@ -127,6 +127,88 @@ h2 {
   object-fit: cover;
 }
 
+/* ===== KATALOG 2026 ===== */
+.katalog-section {
+  padding: 32px 0;
+}
+
+.katalog-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.katalog-container h2 {
+  font-size: 32px;
+  margin-bottom: 0;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.katalog-container p {
+  color: var(--muted);
+  font-size: 16px;
+  margin: 0;
+  max-width: 400px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+.cta-button:hover::before {
+  left: 0;
+}
+
+.cta-button .arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.cta-button:hover .arrow {
+  transform: translateX(4px);
+}
+
 /* ===== SECTIONS ===== */
 .section {
   padding: 22px 0 30px;
@@ -251,6 +333,19 @@ h2 {
   .hero__grid {
     grid-template-columns: 1fr;
   }
+
+  .katalog-container {
+    padding: 30px 20px;
+  }
+
+  .katalog-container h2 {
+    font-size: 24px;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -304,6 +399,24 @@ h2 {
   #produkty .card h3,
   #produkty .card p {
     min-height: 0;
+  }
+
+  .katalog-container {
+    padding: 20px 15px;
+  }
+
+  .katalog-container h2 {
+    font-size: 20px;
+  }
+
+  .katalog-container p {
+    font-size: 14px;
+  }
+
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 14px;
+    gap: 8px;
   }
 
   .operator {
